@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <title>My Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 全局盒模型设置 */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* 页面基础样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background-color: #000000; /* 页面背景黑色，可见1200内容区域 */
+      color: #111827;
+    }
+
+    /* -----------------------------------------------------
+       1200px 居中主内容容器（作业核心要求）
+       ----------------------------------------------------- */
+    .page-container {
+      width: 1200px;
+      margin: 0 auto;     /* 水平居中 */
+      background-color: #ffffff;  
+      /* 你喜欢可以加阴影，让内容浮在黑背景上 */
+      /* box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05); */
+    }
+
+    /* -----------------------------------------------------
+       头图区域（hero section）
+       图片会自动适配成 1200px 宽 × 按比例高度
+       ----------------------------------------------------- */
+    .hero-image {
+      display: block;    /* 去掉图片底部空白 */
+      width: 100%;       /* 填满 1200px 宽 */
+      height: auto;      /* 保持比例（建议你的图片本身是 1200×563） */
+    }
+
+    /* 示例内容内边距，你之后可以调整 */
+    main {
+      padding: 40px 48px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 1200px 容器：所有主要内容必须放在这里 -->
+  <div class="page-container">
+
+    <!-- 顶部头图（Hero Image） -->
+    <div class="hero">
+      <img src="hero.png" alt="Header Image" class="hero-image">
+      <!-- 注意 src 要换成你上传后的文件名 -->
+    </div>
+
+    <!-- 主内容区域 -->
+    <main>
+      <h1>My Personal Website</h1>
+      <p>Welcome to my site.</p>
+    </main>
+
+  </div>
+
+</body>
+</html>
