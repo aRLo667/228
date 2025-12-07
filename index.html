@@ -35,10 +35,24 @@
        头图区域（hero section）
        图片会自动适配成 1200px 宽 × 按比例高度
        ----------------------------------------------------- */
+    .hero {
+      position: relative; /* 让内部绝对定位基于这一块 */
+    }
+    
     .hero-image {
       display: block;    /* 去掉图片底部空白 */
       width: 100%;       /* 填满 1200px 宽 */
       height: auto;      /* 保持比例（建议你的图片本身是 1200×563） */
+    }
+    
+    .hero-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* 精准居中 */
+      width: 150px;   /* 根据你 logo 大小调整，可以改成 150/250 等 */
+      height: auto;
+      pointer-events: none; /* 鼠标点不到它，避免挡住下面东西（可选） */
     }
 
     /* 示例内容内边距，你之后可以调整 */
@@ -55,8 +69,10 @@
 
     <!-- 顶部头图（Hero Image） -->
     <div class="hero">
-      <img src="hero1.jpg" alt="Header Image" class="hero-image">
+      <img src="DSC8423.JPG" alt="Header Image" class="hero-image">
       <!-- 注意 src 要换成你上传后的文件名 -->
+        <img src="Frame 3.png" alt="Personal logo" class="hero-logo">
+      </div>
     </div>
 
     <!-- 主内容区域 -->
@@ -64,7 +80,6 @@
       <h1>My Personal Website</h1>
       <p>Welcome to my site.</p>
     </main>
-
   </div>
 
 </body>
