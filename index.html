@@ -220,10 +220,6 @@
 
       /* 项目图片： - 放在卡片中间上方 - 尺寸不固定，可调：只控制最大宽度 / 高度 - 文字的位置通过 margin 与图片保持固定距离 */
       .project-image {
-        max-width: 600px;
-        /* 最大宽度，可以按需要改 */
-        max-height: 360px;
-        /* 最大高度，防止太夸张溢出 */
         width: auto;
         height: auto;
       }
@@ -317,12 +313,19 @@
 
 </div>
  <!-- ===== 复制 .project-card 做 #002、#003…… ===== -->
-    <div class="project-card">
+    <div class="project-card" style="height:1000px;">
       <div class="project-number">#001-Layout Design</div>
-      <img src="p1.png" class="project-image" style="width:2000px;margin-top:350px;">
-      <h3 class="project-title">Project One</h3>
+      <img src="p1.png" class="project-image" style="width:800px;margin-top:30px;">
+      <h3 class="project-title">magazine-iam</h3>
       <p class="project-description">这是 Project One 的介绍。</p>
     </div>
+        
+    <div class="project-card">
+    <div class="project-number">#002-visual strategy</div>
+    <img src="p2.jpg" class="project-image" style="width:70%;margin-top:150px;">
+    <h3 class="project-title">poster narrative</h3>
+    <p class="project-description">这是第二个项目介绍。</p>
+  </div>
 
       </section> <!-- ============ ABOUT SECTION ============ -->
       <section id="aboutsection" class="aboutsection">
