@@ -1,273 +1,334 @@
 <!DOCTYPE html>
 <html lang="en-CA">
-<head>
-  <meta charset="UTF-8">
-  <title>My Personal Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+      html {
+        scroll-behavior: smooth;
+        /* 点击锚点时平滑滚动 */
+      }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background-color: #000000;
-      color: #111827;
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        background-color: #000000;
+        color: #111827;
+      }
 
-    .page-container {
-      width: 1200px;
-      margin: 0 auto;
-      background-color: #ffffff;
-    }
+      .page-container {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: #ffffff;
+      }
 
-    /* ================ HERO ================ */
-    section.hero {
-      position: relative;
-    }
+      /* ================ HERO ================ */
+      section.hero {
+        position: relative;
+      }
 
-    .hero-image {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+      .hero-image {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
 
-    .hero-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 150px;
-      height: auto;
-      pointer-events: none;
-    }
+      .hero-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: auto;
+        pointer-events: none;
+      }
 
-    /* ================ TELEPORT ================ */
-    section.teleport {
-      position: relative;
-      width: 100%;
-      z-index: 0;
-    }
+      /* ================ TELEPORT ================ */
+      section.teleport {
+        position: relative;
+        width: 100%;
+        z-index: 0;
+      }
 
-    .teleport-top-rect {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      background-color: #000000;
-    }
+      .teleport-top-rect {
+        position: relative;
+        width: 100%;
+        height: 480px;
+        background-color: #000000;
+      }
 
-    .teleport-ellipse {
-      position: absolute;
-      top: calc(50% - 40px - 40px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 890px;
-      height: 80px;
-      background-color: #0000CC;
-      border-radius: 50%;
-      z-index: 1;
-    }
+      .teleport-ellipse {
+        position: absolute;
+        top: calc(50% - 40px - 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: 890px;
+        height: 80px;
+        background-color: #0000CC;
+        border-radius: 50%;
+        z-index: 1;
+      }
 
-    .teleport-ellipse-bottom {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -40px;
-      width: 890px;
-      height: 80px;
-      background-color: #0000CC;
-      border-radius: 50%;
-      z-index: 1;
-    }
+      .teleport-ellipse-bottom {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -40px;
+        width: 890px;
+        height: 80px;
+        background-color: #0000CC;
+        border-radius: 50%;
+        z-index: 1;
+      }
 
-    .teleport-title {
-      position: absolute;
-      top: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 20px;
-      color: #0000CC;
-      z-index: 2;
-    }
+      .teleport-title {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        color: #0000CC;
+        z-index: 2;
+      }
 
-    .teleport-contacts {
-      position: absolute;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      color: #0000CC;
-      font-size: 16px;
-      z-index: 2;
-    }
+      .teleport-contacts {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        color: #0000CC;
+        font-size: 16px;
+        z-index: 2;
+      }
 
-    .teleport-contact-item p {
-      margin: 4px 0;
-      text-align: center;
-    }
+      .teleport-contact-item p {
+        margin: 4px 0;
+        text-align: center;
+      }
 
-    .teleport-contacts a {
-      color: #0000CC;
-      text-decoration: none;
-    }
+      .teleport-contacts a {
+        color: #0000CC;
+        text-decoration: none;
+      }
 
-    .teleport-contacts a:hover {
-      text-decoration: underline;
-    }
+      .teleport-contacts a:hover {
+        text-decoration: underline;
+      }
 
-    /* Portfolio 标题 PNG：640x102，中心对齐上方椭圆下弧中心 */
-    .portfolio-title-img {
-      position: absolute;
-      top: 189px; /* 椭圆底部 240px - 半高 51px */
-      left: 50%;
-      transform: translateX(calc(-50% - 11px)); /* 略向左微调 */
-      width: 610px;
-      height: 102px;
-      z-index: 5;
-    }
+      .portfolio-title-img {
+        position: absolute;
+        top: 189px;
+        /* 椭圆下弧中心对齐 */
+        left: 50%;
+        transform: translateX(calc(-50% - 11px));
+        width: 610px;
+        height: 102px;
+        z-index: 5;
+      }
 
-    /* ================ TRANSITION（Portfolio 大块） ================ */
-    section.transition {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      background-color: #0000CC;
-      z-index: 2;
-      overflow: visible;
-    }
+      /* ================ TRANSITION（Portfolio 区） ================ */
+      section.transition {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        background-color: #0000CC;
+        z-index: 2;
+        overflow: visible;
+      }
 
-    /* 长图 profoliowords.png（640x561） */
-    .transition-img {
-      position: absolute;
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 640px;
-      height: 561px;
-      z-index: 3;
-    }
+      .transition-img {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 640px;
+        height: 561px;
+        z-index: 3;
+      }
 
-    /* 两侧导航文字：/Projects/ 和 /About/ */
-    .transition-link {
-      position: absolute;
-      top: 300px;                 /* 垂直位置，你可以再微调 */
-      font-size: 28px;
-      font-style: italic;
-      text-decoration: underline;
-      color: #000000;
-      z-index: 4;
-    }
+      /* 两侧按钮：/Projects/ 与 /About/ */
+      .transition-link {
+        position: absolute;
+        top: 200px;
+        /* 垂直位置：在 transition 里面 */
+        font-size: 22px;
+        font-style: italic;
+        text-decoration: underline;
+        color: #000000;
+        z-index: 4;
+      }
 
-    .transition-link.projects {
-      left: 110px;                 /* 左侧距离，可调 */
-    }
+      .transition-link.projects {
+        left: 120px;
+        /* 左侧距离，可微调 */
+      }
 
-    .transition-link.about {
-      right: 110px;                /* 右侧距离，可调 */
-    }
+      .transition-link.about {
+        right: 120px;
+        /* 右侧距离，可微调 */
+      }
 
-    .transition-link:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
+      .transition-link:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
 
-    /* ================ Projects Section（锚点目标） ================ */
-    section.projectsection {
-      width: 100%;
-      min-height: 600px;           /* 先给一点高度，方便测试滚动 */
-      background-color: #0000CC;   /* 你之后可以改 */
-      color: #ffffff;
-      padding: 80px 60px;
-    }
+      /* ================ Projects Section（锚点 + 卡片区域） ================ */
+      section.projectsection {
+        width: 100%;
+        background-color: #000000;
+        /* 黑底，蓝色卡片更显眼 */
+        padding: -400px;
+        /* 上下留白 */
+      }
 
-    /* ================ About Section（页面最底部锚点） ================ */
-    section.aboutsection {
-      width: 100%;
-      min-height: 400px;
-      background-color: #ffffff;
-      color: #0000CC;
-      padding: 80px 60px;
-    }
+      /* Project 卡片：横向填充、高度 750px 的蓝色矩形 */
+      .project-card {
+        position: relative;
+        width: 100%;
+        /* 填满 1200px 宽 */
+        height: 750px;
+        /* 固定高度 750px */
+        background-color: #0000CC;
+        /* 0000CC 蓝色 */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* 整体居中，保持画面和谐 */
+      }
 
-  </style>
-</head>
+      /* 左上角编号：斜体、白色、40px，距上 130px、左 55px */
+      .project-number {
+        position: absolute;
+        top: 130px;
+        left: 55px;
+        font-size: 40px;
+        font-style: italic;
+        color: #ffffff;
+      }
 
-<body>
+      /* 项目图片： - 放在卡片中间上方 - 尺寸不固定，可调：只控制最大宽度 / 高度 - 文字的位置通过 margin 与图片保持固定距离 */
+      .project-image {
+        max-width: 600px;
+        /* 最大宽度，可以按需要改 */
+        max-height: 360px;
+        /* 最大高度，防止太夸张溢出 */
+        width: auto;
+        height: auto;
+      }
 
-  <div class="page-container">
+      /* 项目名称： - 位于图片“最下端中心再往下 30px” - 用 margin-top: 30px 保证与图片保持固定距离 */
+      .project-title {
+        margin: 30px 0 0;
+        /* 与图片底部相距 30px */
+        font-size: 96px;
+        font-style: italic;
+        color: #FF0000;
+        /* FF0000 红色 */
+        line-height: 1;
+        white-space: nowrap;
+        text-align: center;
+      }
 
-    <!-- ============ HERO ============ -->
-    <section id="hero" class="hero">
-      <img src="DSC8423.JPG" alt="Header Image" class="hero-image">
-      <img src="Frame 3.png" alt="Personal logo" class="hero-logo">
-    </section>
+      /* 项目简介： - 项目名字下方 20px - 最大宽度 540px，居中 */
+      .project-description {
+        margin: 20px 0 0;
+        /* 与标题底部相距 20px */
+        max-width: 540px;
+        font-size: 20px;
+        font-style: italic;
+        color: #ffffff;
+        text-align: center;
+      }
 
-    <!-- ============ TELEPORT ============ -->
-    <section id="teleport" class="teleport">
-      <div class="teleport-top-rect">
+      /* 多个卡片之间的间距（如果你后面复制更多） */
+      .project-card+.project-card {
+        margin-top: 0px;
+      }
 
-        <div class="teleport-title">Teleports</div>
-
-        <div class="teleport-ellipse"></div>
-
-        <!-- Portfolio 标题图 -->
-        <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
-
-        <div class="teleport-contacts">
-          <div class="teleport-contact-item">
-            <p>email:</p>
-            <p>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arlo6677@163.com" target="_blank">
-                arlo6677@163.com
-              </a>
-            </p>
+      /* ================ About Section（底部锚点） ================ */
+      section.aboutsection {
+        width: 100%;
+        min-height: 600px;
+        background-color: #ffffff;
+        color: #0000CC;
+        padding: 80px 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container"> <!-- ============ HERO ============ -->
+      <section id="hero" class="hero"> <img src="DSC8423.JPG" alt="Header Image" class="hero-image"> <img src="Frame 3.png" alt="Personal logo" class="hero-logo"> </section> <!-- ============ TELEPORT ============ -->
+      <section id="teleport" class="teleport">
+        <div class="teleport-top-rect">
+          <div class="teleport-title">Teleports</div>
+          <div class="teleport-ellipse"></div> <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
+          <div class="teleport-contacts">
+            <div class="teleport-contact-item">
+              <p>email:</p>
+              <p> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arlo6677@163.com" target="_blank"> arlo6677@163.com </a> </p>
+            </div>
+            <div class="teleport-contact-item">
+              <p>Instagram:</p>
+              <p> <a href="https://www.instagram.com/arlooo77" target="_blank">arloooo77</a> </p>
+            </div>
+            <div class="teleport-contact-item">
+              <p>Tel:</p>
+              <p><a href="tel:+14376633806">(437)-663-3806</a></p>
+            </div>
           </div>
-
-          <div class="teleport-contact-item">
-            <p>Instagram:</p>
-            <p>
-              <a href="https://www.instagram.com/arlooo77" target="_blank">arloooo77</a>
-            </p>
-          </div>
-
-          <div class="teleport-contact-item">
-            <p>Tel:</p>
-            <p><a href="tel:+14376633806">(437)-663-3806</a></p>
-          </div>
+          <div class="teleport-ellipse-bottom"></div>
         </div>
+      </section> <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
+      <section id="transition" class="transition"> <img src="profoliowords.png" alt="Portfolio image" class="transition-img"> <!-- 这两个按钮现在是 transition 的子元素 --> <a href="#projectsection" class="transition-link projects">/Projects/</a> <a href="#aboutsection" class="transition-link about">/About/</a> </section> <!-- ============ PROJECTS SECTION ============ -->
+      <section id="projectsection" class="projectsection"> <!-- ===== Project 卡片模板：一个项目占一张卡 ===== -->
+        <div class="project-card">
 
-        <div class="teleport-ellipse-bottom"></div>
+    <div class="project-number">#000(page concept)</div>
 
-      </div>
-    </section>
+    <!-- 一次性黑色椭圆 -->
+    <div 
+      style="
+        width:1124px;
+        height:120px;
+        background:#000000;
+        border-radius:50%;
+        margin-top:80px;
+      ">
+    </div>
 
-    <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
-    <section id="transition" class="transition">
-      <img src="profoliowords.png" alt="Portfolio image" class="transition-img">
+  <h3 class="project-title">HOLE</h3>
 
-      <!-- 左右导航文字按钮 -->
-      <a href="#projectsection" class="transition-link projects">/Projects/</a>
-      <a href="#aboutsection" class="transition-link about">/About/</a>
-    </section>
+  <p class="project-description">
+    在这里写这个项目的介绍。无论你把上面那张图形换成什么尺寸，
+    标题都会保持与图片底部 30px 的距离，简介与标题之间则保持 20px。
+  </p>
 
-    <!-- ============ PROJECTS SECTION（目标锚点） ============ -->
-    <section id="projectsection" class="projectsection">
-      <h2>Projects</h2>
-      <p>这里之后你可以放作品卡片、图片、说明文字等。</p>
-    </section>
+</div>
+ <!-- ===== 复制 .project-card 做 #002、#003…… ===== -->
+    <div class="project-card">
+      <div class="project-number">#001</div>
+      <img src="p1.png" class="project-image" style="width:580px;">
+      <h3 class="project-title">Project One</h3>
+      <p class="project-description">这是 Project One 的介绍。</p>
+    </div>
 
-    <!-- ============ ABOUT SECTION（页面最底部） ============ -->
-    <section id="aboutsection" class="aboutsection">
-      <h2>About</h2>
-      <p>这里之后你可以写自我介绍、背景信息等。</p>
-    </section>
-
-  </div>
-
-</body>
+      </section> <!-- ============ ABOUT SECTION ============ -->
+      <section id="aboutsection" class="aboutsection">
+        <h2>About</h2>
+        <p>这里是关于你的介绍区域。</p>
+      </section>
+    </div>
+  </body>
 </html>
