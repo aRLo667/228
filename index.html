@@ -49,7 +49,7 @@
     section.teleport {
       position: relative;
       width: 100%;
-      z-index: 0;              /* ↓ 让它在下面 */
+      z-index: 0;
     }
 
     .teleport-top-rect {
@@ -59,10 +59,9 @@
       background-color: #000000;
     }
 
-    /* 上方椭圆 */
     .teleport-ellipse {
       position: absolute;
-      top: calc(50% - 40px - 40px);  /* 480px 高里略微靠上 */
+      top: calc(50% - 40px - 40px);
       left: 50%;
       transform: translateX(-50%);
       width: 890px;
@@ -72,12 +71,11 @@
       z-index: 1;
     }
 
-    /* 下方椭圆 */
     .teleport-ellipse-bottom {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -40px;                  /* 半高 40 → 中心在下边缘 */
+      bottom: -40px;
       width: 890px;
       height: 80px;
       background-color: #0000CC;
@@ -125,33 +123,75 @@
     /* Portfolio 标题 PNG：640x102，中心对齐上方椭圆下弧中心 */
     .portfolio-title-img {
       position: absolute;
-      top: 189px;              /* 计算：椭圆底部 240px - 半高 51px = 189px */
+      top: 189px; /* 椭圆底部 240px - 半高 51px */
       left: 50%;
-      transform: translateX(calc(-50% - 11px));
+      transform: translateX(calc(-50% - 11px)); /* 略向左微调 */
       width: 610px;
       height: 102px;
-      z-index: 5;              /* 全页面最上层 */
+      z-index: 5;
     }
 
-    /* ================ TRANSITION ================ */
+    /* ================ TRANSITION（Portfolio 大块） ================ */
     section.transition {
       position: relative;
       width: 100%;
       height: 500px;
       background-color: #0000CC;
-      z-index: 2;              /* ↑ 整块压在 teleport 之上 */
+      z-index: 2;
       overflow: visible;
     }
 
     /* 长图 profoliowords.png（640x561） */
     .transition-img {
       position: absolute;
-      top: -60px;              /* 你之前调好的视觉位置 */
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
       width: 640px;
       height: 561px;
-      z-index: 3;              /* 高于蓝底，但低于 Portfolio 标题 */
+      z-index: 3;
+    }
+
+    /* 两侧导航文字：/Projects/ 和 /About/ */
+    .transition-link {
+      position: absolute;
+      top: 300px;                 /* 垂直位置，你可以再微调 */
+      font-size: 28px;
+      font-style: italic;
+      text-decoration: underline;
+      color: #000000;
+      z-index: 4;
+    }
+
+    .transition-link.projects {
+      left: 110px;                 /* 左侧距离，可调 */
+    }
+
+    .transition-link.about {
+      right: 110px;                /* 右侧距离，可调 */
+    }
+
+    .transition-link:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    /* ================ Projects Section（锚点目标） ================ */
+    section.projectsection {
+      width: 100%;
+      min-height: 600px;           /* 先给一点高度，方便测试滚动 */
+      background-color: #0000CC;   /* 你之后可以改 */
+      color: #ffffff;
+      padding: 80px 60px;
+    }
+
+    /* ================ About Section（页面最底部锚点） ================ */
+    section.aboutsection {
+      width: 100%;
+      min-height: 400px;
+      background-color: #ffffff;
+      color: #0000CC;
+      padding: 80px 60px;
     }
 
   </style>
@@ -173,13 +213,11 @@
 
         <div class="teleport-title">Teleports</div>
 
-        <!-- 上方椭圆 -->
         <div class="teleport-ellipse"></div>
 
-        <!-- Portfolio 标题 PNG（跟随上方椭圆定位） -->
+        <!-- Portfolio 标题图 -->
         <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
 
-        <!-- 联系方式 -->
         <div class="teleport-contacts">
           <div class="teleport-contact-item">
             <p>email:</p>
@@ -203,15 +241,30 @@
           </div>
         </div>
 
-        <!-- 下方椭圆 -->
         <div class="teleport-ellipse-bottom"></div>
 
       </div>
     </section>
 
-    <!-- ============ TRANSITION ============ -->
+    <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
     <section id="transition" class="transition">
       <img src="profoliowords.png" alt="Portfolio image" class="transition-img">
+
+      <!-- 左右导航文字按钮 -->
+      <a href="#projectsection" class="transition-link projects">/Projects/</a>
+      <a href="#aboutsection" class="transition-link about">/About/</a>
+    </section>
+
+    <!-- ============ PROJECTS SECTION（目标锚点） ============ -->
+    <section id="projectsection" class="projectsection">
+      <h2>Projects</h2>
+      <p>这里之后你可以放作品卡片、图片、说明文字等。</p>
+    </section>
+
+    <!-- ============ ABOUT SECTION（页面最底部） ============ -->
+    <section id="aboutsection" class="aboutsection">
+      <h2>About</h2>
+      <p>这里之后你可以写自我介绍、背景信息等。</p>
     </section>
 
   </div>
