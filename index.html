@@ -254,13 +254,19 @@
       }
 
       /* ================ About Section（底部锚点） ================ */
+      /* ================ About Section（底部锚点） ================ */
       section.aboutsection {
         width: 100%;
-        min-height: 600px;
-        background-color: #ffffff;
-        color: #0000CC;
-        padding: 80px 60px;
+        background-color: #000000;  /* 或者随便，反正被图片盖住 */
+        padding: 0;                 /* 不要留白 */
       }
+
+      .about-image {
+        display: block;
+        width: 100%;   /* 刚好填满 1200px 的 page-container */
+        height: auto;  /* 按比例缩放 */
+      }
+
     </style>
   </head>
   <body>
@@ -326,12 +332,26 @@
     <h3 class="project-title">poster narrative</h3>
     <p class="project-description">这是第二个项目介绍。</p>
   </div>
+        
+    <div class="project-card" style="height:1600px;">
+    <div class="project-number">#003-street photography</div>
+    <img src="p3.jpg" class="project-image" style="height:900px ;margin-top:100px;">
+    <h3 class="project-title">crowd</h3>
+    <p class="project-description">2025 上海 Shanghai<br>China's shared bike phenomenon took off and rapidly reached saturation after 2018. Today, various brands of shared bicycles are arguably the most widely used form of transport on Chinese urban streets. In this series, I photographed them specifically to represent and signify the flux of human traffic and crowds.</p>
+  </div>
+    
+    <div class="project-card" style="height:1600px;">
+    <div class="project-number">#004-street photography</div>
+    <img src="p4.jpg" class="project-image" style="height:900px ;margin-top:-80px;">
+    <h3 class="project-title">intermezzo</h3>
+    <p class="project-description">2025 上海 Shanghai<br></p>
+  </div>
 
       </section> <!-- ============ ABOUT SECTION ============ -->
       <section id="aboutsection" class="aboutsection">
-        <h2>About</h2>
-        <p>这里是关于你的介绍区域。</p>
-      </section>
+  <img src="about.png" alt="About page" class="about-image">
+</section>
+
     </div>
   </body>
 </html>
