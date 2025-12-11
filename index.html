@@ -233,7 +233,7 @@
         text-align: center;
       }
 
-      .project-card + .project-card {
+      .project-card+.project-card {
         margin-top: 0px;
       }
 
@@ -256,18 +256,20 @@
       .project-card {
         /* 保留原来写在 style="" 里的 height，不动；
            用 max-height 把它折叠起来 */
-        max-height: 220px;              /* 折叠高度，只够显示编号 */
+        max-height: 220px;
+        /* 折叠高度，只够显示编号 */
         transition: max-height 0.6s ease;
         cursor: pointer;
       }
 
       /* Hover 时：放开高度，展开成你原来设定的 750/1000/1600px */
       .project-card:hover {
-        max-height: 2000px;             /* 足够大，实际高度还是按原本的 height 来 */
+        max-height: 2000px;
+        /* 足够大，实际高度还是按原本的 height 来 */
       }
 
       /* 默认把除了编号以外的内容都「藏起来」（透明 + 位移） */
-      .project-card > :not(.project-number) {
+      .project-card> :not(.project-number) {
         opacity: 0;
         transform: translateY(20px);
         pointer-events: none;
@@ -275,7 +277,7 @@
       }
 
       /* Hover 时：内容淡入、回到原位置 */
-      .project-card:hover > :not(.project-number) {
+      .project-card:hover> :not(.project-number) {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
@@ -331,8 +333,7 @@
           <div class="project-number">#000(page concept)</div>
 
           <!-- 一次性黑色椭圆 -->
-          <div 
-            style="
+          <div style="
               width:1124px;
               height:120px;
               background:#000000;
