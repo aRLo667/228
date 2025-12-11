@@ -14,9 +14,13 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         margin: 0;
@@ -32,7 +36,9 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         background-color: #ffffff;
       }
 
-      section.hero { position: relative; }
+      section.hero {
+        position: relative;
+      }
 
       .hero-image {
         display: block;
@@ -42,7 +48,8 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
 
       .hero-logo {
         position: absolute;
-        top: 50%; left: 50%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         width: 150px;
         height: auto;
@@ -88,7 +95,8 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
 
       .teleport-title {
         position: absolute;
-        top: 80px; left: 50%;
+        top: 80px;
+        left: 50%;
         transform: translateX(-50%);
         font-size: 20px;
         color: #0000CC;
@@ -97,7 +105,8 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
 
       .teleport-contacts {
         position: absolute;
-        bottom: 100px; left: 50%;
+        bottom: 100px;
+        left: 50%;
         transform: translateX(-50%);
         width: 100%;
         display: flex;
@@ -117,7 +126,9 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         text-decoration: none;
       }
 
-      .teleport-contacts a:hover { text-decoration: underline; }
+      .teleport-contacts a:hover {
+        text-decoration: underline;
+      }
 
       .portfolio-title-img {
         position: absolute;
@@ -158,15 +169,35 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         z-index: 4;
       }
 
-      .transition-link.projects { left: 120px; }
-      .transition-link.about { right: 120px; }
+      .transition-link.projects {
+        left: 120px;
+      }
 
-      .transition-link:hover { cursor: pointer; opacity: 0.8; }
+      .transition-link.about {
+        right: 120px;
+      }
 
-      a:link { color: #0000CC; text-decoration: none; }
-      a:visited { color: #4b0082; }
-      a:hover { text-decoration: underline; }
-      a:active { color: #f97316; }
+      .transition-link:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      a:link {
+        color: #0000CC;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: #4b0082;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: #f97316;
+      }
 
       section.projectsection {
         width: 100%;
@@ -196,13 +227,17 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
 
       .project-number {
         position: absolute;
-        top: 130px; left: 55px;
+        top: 130px;
+        left: 55px;
         font-size: 40px;
         font-style: italic;
         color: #ffffff;
       }
 
-      .project-image { width: auto; height: auto; }
+      .project-image {
+        width: auto;
+        height: auto;
+      }
 
       .project-title {
         margin: 30px 0 0;
@@ -223,16 +258,18 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         text-align: center;
       }
 
-      .project-card:hover { max-height: 2000px; }
+      .project-card:hover {
+        max-height: 2000px;
+      }
 
-      .project-card > :not(.project-number) {
+      .project-card> :not(.project-number) {
         opacity: 0;
         transform: translateY(20px);
         pointer-events: none;
         transition: opacity 0.4s ease, transform 0.4s ease;
       }
 
-      .project-card:hover > :not(.project-number) {
+      .project-card:hover> :not(.project-number) {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
@@ -243,7 +280,7 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         cursor: default !important;
       }
 
-      .project-card.no-hover > * {
+      .project-card.no-hover>* {
         opacity: 1 !important;
         transform: translateY(0) !important;
       }
@@ -265,7 +302,9 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         vertical-align: top;
       }
 
-      .about-body { margin-top: 24px; }
+      .about-body {
+        margin-top: 24px;
+      }
 
       .about-divider {
         width: 2px;
@@ -319,8 +358,16 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
         gap: 10px;
       }
 
-      .footer-logo { width: 80px; height: auto; }
-      .footer-sign { width: 80px; height: auto; opacity: 0.8; }
+      .footer-logo {
+        width: 80px;
+        height: auto;
+      }
+
+      .footer-sign {
+        width: 80px;
+        height: auto;
+        opacity: 0.8;
+      }
     </style>
   </head>
 
@@ -362,7 +409,7 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
           <div class="teleport-ellipse-bottom"></div>
         </div>
       </section>
-      
+
       <section id="transition" class="transition">
         <img src="profoliowords.png" class="transition-img">
         <a href="#projectsection" class="transition-link projects">/Projects/</a>
@@ -406,7 +453,7 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
             <img src="p3.jpg" class="project-image" style="height:900px;margin-top:100px;">
             <h3 class="project-title">crowd</h3>
             <p class="project-description">2025 上海 Shanghai<br>
-            China's shared bike phenomenon took off and rapidly reached saturation after 2018. Today, various brands of shared bicycles are arguably the most widely used form of transport on Chinese urban streets. In this series, I photographed them specifically to represent and signify the flux of human traffic and crowds.</p>
+              China's shared bike phenomenon took off and rapidly reached saturation after 2018. Today, various brands of shared bicycles are arguably the most widely used form of transport on Chinese urban streets. In this series, I photographed them specifically to represent and signify the flux of human traffic and crowds.</p>
           </div>
 
           <div class="project-card" style="height:1600px;">
@@ -414,7 +461,7 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
             <img src="p4.jpg" class="project-image" style="height:900px;margin-top:100px;">
             <h3 class="project-title">intermezzo</h3>
             <p class="project-description">2025 上海 Shanghai<br>
-            The street is a stage—that is my conviction. Consequently, all others become the actors, and I am the audience. This body of work marks the beginning of a larger series, aiming to incorporate and record what is observed through this distinct spectator's perspective.</p>
+              The street is a stage—that is my conviction. Consequently, all others become the actors, and I am the audience. This body of work marks the beginning of a larger series, aiming to incorporate and record what is observed through this distinct spectator's perspective.</p>
           </div>
 
         </div>
@@ -434,7 +481,9 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
               </div>
             </td>
 
-            <td><div class="about-divider"></div></td>
+            <td>
+              <div class="about-divider"></div>
+            </td>
 
             <td>
               <div class="about-heading">LOCATION</div>
@@ -444,7 +493,9 @@ I only use AI for functional guidance, all design, layout decisions, and visual 
               </div>
             </td>
 
-            <td><div class="about-divider"></div></td>
+            <td>
+              <div class="about-divider"></div>
+            </td>
 
             <td>
               <div class="about-heading">FOCUS</div>
