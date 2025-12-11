@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>My Personal Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
       * {
         box-sizing: border-box;
       }
 
-      html，body {
-        scroll-behavior: smooth;
-        /* 点击锚点时平滑滚动 */
+      /* 注意这里的逗号是英文半角 , */
+      html, body {
+        scroll-behavior: smooth;  /* 点击锚点时平滑滚动 */
       }
 
       body {
@@ -126,8 +127,7 @@
 
       .portfolio-title-img {
         position: absolute;
-        top: 189px;
-        /* 椭圆下弧中心对齐 */
+        top: 189px;       /* 椭圆下弧中心对齐 */
         left: 50%;
         transform: translateX(calc(-50% - 11px));
         width: 610px;
@@ -158,8 +158,7 @@
       /* 两侧按钮：/Projects/ 与 /About/ */
       .transition-link {
         position: absolute;
-        top: 200px;
-        /* 垂直位置：在 transition 里面 */
+        top: 200px;                 /* 垂直位置：在 transition 里面 */
         font-size: 22px;
         font-style: italic;
         text-decoration: underline;
@@ -168,27 +167,43 @@
       }
 
       .transition-link.projects {
-        left: 120px;
-        /* 左侧距离，可微调 */
+        left: 120px;                /* 左侧距离，可微调 */
       }
 
       .transition-link.about {
-        right: 120px;
-        /* 右侧距离，可微调 */
+        right: 120px;               /* 右侧距离，可微调 */
       }
 
       .transition-link:hover {
         cursor: pointer;
         opacity: 0.8;
       }
+      a:link {
+  color: #0000CC;
+  text-decoration: none;
+}
 
-      /* ================ Projects Section（锚点 + 卡片区域） ================ */
+a:visited {
+  color: #4b0082;  /* 随便一个偏深的蓝紫色，区分访问过 */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: #f97316;  /* 点击瞬间的颜色 */
+}
+
+
+      /* ================ Projects Section ================ */
       section.projectsection {
         width: 100%;
         background-color: #000000;
-        padding: -400px;
+        padding: 0;                 /* 原来是 -400px，padding 不能为负 */
       }
 
+      /* Project 卡片基础样式 */
       .project-card {
         position: relative;
         width: 100%;
@@ -198,8 +213,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        /* 折叠效果默认值 */
+        max-height: 220px;          /* 默认只露出编号部分 */
+        transition: max-height 0.6s ease;
+        cursor: pointer;
       }
 
+      /* 左上角编号 */
       .project-number {
         position: absolute;
         top: 130px;
@@ -233,8 +254,28 @@
         text-align: center;
       }
 
-      .project-card+.project-card {
-        margin-top: 0px;
+      .project-card + .project-card {
+        margin-top: 0;
+      }
+
+      /* Hover 展开 */
+      .project-card:hover {
+        max-height: 2000px; /* 足够大，实际高度由行内 height 控制 */
+      }
+
+      /* 默认除了编号外都透明 + 下移一点 */
+      .project-card > :not(.project-number) {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      /* Hover 时淡入 */
+      .project-card:hover > :not(.project-number) {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
       /* ================ About Section（底部锚点） ================ */
@@ -249,43 +290,51 @@
         width: 100%;
         height: auto;
       }
+      /* =============== FOOTER =============== */
+footer {
+  width: 100%;
+  height: 120px;
+  background-color: #000000;
 
-      /* ====== 这里开始是新增的「折叠 + hover 展开」效果 ====== */
+  display: flex;
+  justify-content: center;   /* 中间文字保持居中 */
+  align-items: center;
+  position: relative;        /* 为右侧元素定位 */
+}
 
-      /* 默认：卡片折叠，只露出编号区域 */
-      .project-card {
-        /* 保留原来写在 style="" 里的 height，不动；
-           用 max-height 把它折叠起来 */
-        max-height: 220px;
-        /* 折叠高度，只够显示编号 */
-        transition: max-height 0.6s ease;
-        cursor: pointer;
-      }
+.footer-text {
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  font-style: italic;
+}
 
-      /* Hover 时：放开高度，展开成你原来设定的 750/1000/1600px */
-      .project-card:hover {
-        max-height: 2000px;
-        /* 足够大，实际高度还是按原本的 height 来 */
-      }
+/* 右侧 logo + 签名 */
+.footer-right {
+  position: absolute;
+  right: 40px;      /* 右边留一点空间 */
+  display: flex;
+  align-items: center;
+  gap: 10px;        /* logo 与签名之间的间距 */
+}
 
-      /* 默认把除了编号以外的内容都「藏起来」（透明 + 位移） */
-      .project-card> :not(.project-number) {
-        opacity: 0;
-        transform: translateY(20px);
-        pointer-events: none;
-        transition: opacity 0.4s ease, transform 0.4s ease;
-      }
+.footer-logo {
+  width: 80px;      /* 小巧，不突兀 */
+  height: auto;
+}
 
-      /* Hover 时：内容淡入、回到原位置 */
-      .project-card:hover> :not(.project-number) {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
+.footer-sign {
+  width: 80px;      /* 签名图片稍大 */
+  height: auto;
+  opacity: 0.8;     /* 更优雅 */
+}
+
     </style>
   </head>
+
   <body>
     <div class="page-container">
+
       <!-- ============ HERO ============ -->
       <section id="hero" class="hero">
         <img src="DSC8423.JPG" alt="Header Image" class="hero-image">
@@ -297,25 +346,31 @@
         <div class="teleport-top-rect">
           <div class="teleport-title">Teleports</div>
           <div class="teleport-ellipse"></div>
+
           <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
+
           <div class="teleport-contacts">
             <div class="teleport-contact-item">
               <p>email:</p>
               <p>
+                <a href="mailto:w92wang@uwaterloo.ca">w92wang@uwaterloo.ca<br></a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arlo6677@163.com" target="_blank">
-                  arlo6677@163.com
-                </a>
+  arlo6677@163.com
+</a>
               </p>
             </div>
+
             <div class="teleport-contact-item">
               <p>Instagram:</p>
               <p><a href="https://www.instagram.com/arlooo77" target="_blank">arloooo77</a></p>
             </div>
+
             <div class="teleport-contact-item">
               <p>Tel:</p>
               <p><a href="tel:+14376633806">(437)-663-3806</a></p>
             </div>
           </div>
+
           <div class="teleport-ellipse-bottom"></div>
         </div>
       </section>
@@ -323,24 +378,24 @@
       <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
       <section id="transition" class="transition">
         <img src="profoliowords.png" alt="Portfolio image" class="transition-img">
+
         <a href="#projectsection" class="transition-link projects">/Projects/</a>
         <a href="#aboutsection" class="transition-link about">/About/</a>
       </section>
 
       <!-- ============ PROJECTS SECTION ============ -->
       <section id="projectsection" class="projectsection">
+
         <div class="project-card" style="height:750px;">
           <div class="project-number">#000(page concept)</div>
 
-          <!-- 一次性黑色椭圆 -->
           <div style="
               width:1124px;
               height:120px;
               background:#000000;
               border-radius:50%;
               margin-top:80px;
-            ">
-          </div>
+            "></div>
 
           <h3 class="project-title">HOLE</h3>
 
@@ -395,5 +450,14 @@
         <img src="about.png" alt="About page" class="about-image">
       </section>
     </div>
+    <footer>
+  <div class="footer-text">©aRLo667 2025 ALL RIGHTS RESERVED</div>
+
+  <div class="footer-right">
+    <img src="Group 7.png" alt="Logo" class="footer-logo">
+    <img src="signature.png" alt="Signature" class="footer-sign">
+  </div>
+</footer>
+
   </body>
 </html>
