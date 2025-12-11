@@ -9,7 +9,7 @@
         box-sizing: border-box;
       }
 
-      html {
+      html，body {
         scroll-behavior: smooth;
         /* 点击锚点时平滑滚动 */
       }
@@ -186,29 +186,20 @@
       section.projectsection {
         width: 100%;
         background-color: #000000;
-        /* 黑底，蓝色卡片更显眼 */
         padding: -400px;
-        /* 上下留白 */
       }
 
-      /* Project 卡片：横向填充、高度 750px 的蓝色矩形 */
       .project-card {
         position: relative;
         width: 100%;
-        /* 填满 1200px 宽 */
-        height: 750px;
-        /* 固定高度 750px */
         background-color: #0000CC;
-        /* 0000CC 蓝色 */
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        /* 整体居中，保持画面和谐 */
       }
 
-      /* 左上角编号：斜体、白色、40px，距上 130px、左 55px */
       .project-number {
         position: absolute;
         top: 130px;
@@ -218,29 +209,23 @@
         color: #ffffff;
       }
 
-      /* 项目图片： - 放在卡片中间上方 - 尺寸不固定，可调：只控制最大宽度 / 高度 - 文字的位置通过 margin 与图片保持固定距离 */
       .project-image {
         width: auto;
         height: auto;
       }
 
-      /* 项目名称： - 位于图片“最下端中心再往下 30px” - 用 margin-top: 30px 保证与图片保持固定距离 */
       .project-title {
         margin: 30px 0 0;
-        /* 与图片底部相距 30px */
         font-size: 96px;
         font-style: italic;
         color: #FF0000;
-        /* FF0000 红色 */
         line-height: 1;
         white-space: nowrap;
         text-align: center;
       }
 
-      /* 项目简介： - 项目名字下方 20px - 最大宽度 540px，居中 */
       .project-description {
         margin: 20px 0 0;
-        /* 与标题底部相距 20px */
         max-width: 540px;
         font-size: 20px;
         font-style: italic;
@@ -248,42 +233,81 @@
         text-align: center;
       }
 
-      /* 多个卡片之间的间距（如果你后面复制更多） */
-      .project-card+.project-card {
+      .project-card + .project-card {
         margin-top: 0px;
       }
 
       /* ================ About Section（底部锚点） ================ */
-      /* ================ About Section（底部锚点） ================ */
       section.aboutsection {
         width: 100%;
-        background-color: #000000;  /* 或者随便，反正被图片盖住 */
-        padding: 0;                 /* 不要留白 */
+        background-color: #000000;
+        padding: 0;
       }
 
       .about-image {
         display: block;
-        width: 100%;   /* 刚好填满 1200px 的 page-container */
-        height: auto;  /* 按比例缩放 */
+        width: 100%;
+        height: auto;
       }
 
+      /* ====== 这里开始是新增的「折叠 + hover 展开」效果 ====== */
+
+      /* 默认：卡片折叠，只露出编号区域 */
+      .project-card {
+        /* 保留原来写在 style="" 里的 height，不动；
+           用 max-height 把它折叠起来 */
+        max-height: 220px;              /* 折叠高度，只够显示编号 */
+        transition: max-height 0.6s ease;
+        cursor: pointer;
+      }
+
+      /* Hover 时：放开高度，展开成你原来设定的 750/1000/1600px */
+      .project-card:hover {
+        max-height: 2000px;             /* 足够大，实际高度还是按原本的 height 来 */
+      }
+
+      /* 默认把除了编号以外的内容都「藏起来」（透明 + 位移） */
+      .project-card > :not(.project-number) {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      /* Hover 时：内容淡入、回到原位置 */
+      .project-card:hover > :not(.project-number) {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
     </style>
   </head>
   <body>
-    <div class="page-container"> <!-- ============ HERO ============ -->
-      <section id="hero" class="hero"> <img src="DSC8423.JPG" alt="Header Image" class="hero-image"> <img src="Frame 3.png" alt="Personal logo" class="hero-logo"> </section> <!-- ============ TELEPORT ============ -->
+    <div class="page-container">
+      <!-- ============ HERO ============ -->
+      <section id="hero" class="hero">
+        <img src="DSC8423.JPG" alt="Header Image" class="hero-image">
+        <img src="Frame 3.png" alt="Personal logo" class="hero-logo">
+      </section>
+
+      <!-- ============ TELEPORT ============ -->
       <section id="teleport" class="teleport">
         <div class="teleport-top-rect">
           <div class="teleport-title">Teleports</div>
-          <div class="teleport-ellipse"></div> <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
+          <div class="teleport-ellipse"></div>
+          <img src="Portfolio.png" alt="Portfolio title" class="portfolio-title-img">
           <div class="teleport-contacts">
             <div class="teleport-contact-item">
               <p>email:</p>
-              <p> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arlo6677@163.com" target="_blank"> arlo6677@163.com </a> </p>
+              <p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arlo6677@163.com" target="_blank">
+                  arlo6677@163.com
+                </a>
+              </p>
             </div>
             <div class="teleport-contact-item">
               <p>Instagram:</p>
-              <p> <a href="https://www.instagram.com/arlooo77" target="_blank">arloooo77</a> </p>
+              <p><a href="https://www.instagram.com/arlooo77" target="_blank">arloooo77</a></p>
             </div>
             <div class="teleport-contact-item">
               <p>Tel:</p>
@@ -292,63 +316,83 @@
           </div>
           <div class="teleport-ellipse-bottom"></div>
         </div>
-      </section> <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
-      <section id="transition" class="transition"> <img src="profoliowords.png" alt="Portfolio image" class="transition-img"> <!-- 这两个按钮现在是 transition 的子元素 --> <a href="#projectsection" class="transition-link projects">/Projects/</a> <a href="#aboutsection" class="transition-link about">/About/</a> </section> <!-- ============ PROJECTS SECTION ============ -->
-      <section id="projectsection" class="projectsection"> <!-- ===== Project 卡片模板：一个项目占一张卡 ===== -->
-        <div class="project-card">
+      </section>
 
-    <div class="project-number">#000(page concept)</div>
+      <!-- ============ TRANSITION / PORTFOLIO AREA ============ -->
+      <section id="transition" class="transition">
+        <img src="profoliowords.png" alt="Portfolio image" class="transition-img">
+        <a href="#projectsection" class="transition-link projects">/Projects/</a>
+        <a href="#aboutsection" class="transition-link about">/About/</a>
+      </section>
 
-    <!-- 一次性黑色椭圆 -->
-    <div 
-      style="
-        width:1124px;
-        height:120px;
-        background:#000000;
-        border-radius:50%;
-        margin-top:80px;
-      ">
-    </div>
+      <!-- ============ PROJECTS SECTION ============ -->
+      <section id="projectsection" class="projectsection">
+        <div class="project-card" style="height:750px;">
+          <div class="project-number">#000(page concept)</div>
 
-  <h3 class="project-title">HOLE</h3>
+          <!-- 一次性黑色椭圆 -->
+          <div 
+            style="
+              width:1124px;
+              height:120px;
+              background:#000000;
+              border-radius:50%;
+              margin-top:80px;
+            ">
+          </div>
 
-  <p class="project-description">The Hole, in any sense of the word: Be it a Black Hole, a Hollow Tree, or a Rabbit Hole, its meaning is irrelevant. <br><br>Regardless of the entry point, welcome to my space.</p>
+          <h3 class="project-title">HOLE</h3>
 
-</div>
- <!-- ===== 复制 .project-card 做 #002、#003…… ===== -->
-    <div class="project-card" style="height:1000px;">
-      <div class="project-number">#001-Layout Design</div>
-      <img src="p1.png" class="project-image" style="width:800px;margin-top:100px;">
-      <h3 class="project-title">magazine-iam</h3>
-      <p class="project-description">School design project. I conceptualized it as the inaugural issue of a continuing magazine series, selecting blue as the thematic color for this edition. The layout features a text-dominant design, with a specific emphasis on Chinese typography.</p>
-    </div>
-        
-    <div class="project-card" style="height:1000px;">
-    <div class="project-number">#002-visual strategy</div>
-    <img src="p2.jpg" class="project-image" style="width:70%;margin-top:100px;">
-    <h3 class="project-title">poster narrative</h3>
-    <p class="project-description">A school design project that required the creation of four posters to form a self-statement (or a personal narrative). I approached this task by employing deconstruction, sequence, and recombination, strategically pairing the four pieces to construct my own narrative structure and flow.</p>
-  </div>
-        
-    <div class="project-card" style="height:1600px;">
-    <div class="project-number">#003-street photography</div>
-    <img src="p3.jpg" class="project-image" style="height:900px ;margin-top:100px;">
-    <h3 class="project-title">crowd</h3>
-    <p class="project-description">2025 上海 Shanghai<br>China's shared bike phenomenon took off and rapidly reached saturation after 2018. Today, various brands of shared bicycles are arguably the most widely used form of transport on Chinese urban streets. In this series, I photographed them specifically to represent and signify the flux of human traffic and crowds.</p>
-  </div>
-    
-    <div class="project-card" style="height:1600px;">
-    <div class="project-number">#004-street photography</div>
-    <img src="p4.jpg" class="project-image" style="height:900px ;margin-top:100px;">
-    <h3 class="project-title">intermezzo</h3>
-    <p class="project-description">2025 上海 Shanghai<br>The street is a stage—that is my conviction. Consequently, all others become the actors, and I am the audience. This body of work marks the beginning of a larger series, aiming to incorporate and record what is observed through this distinct spectator's perspective.</p>
-  </div>
+          <p class="project-description">
+            The Hole, in any sense of the word: Be it a Black Hole, a Hollow Tree, or a Rabbit Hole, its meaning is irrelevant.
+            <br><br>
+            Regardless of the entry point, welcome to my space.
+          </p>
+        </div>
 
-      </section> <!-- ============ ABOUT SECTION ============ -->
+        <div class="project-card" style="height:1000px;">
+          <div class="project-number">#001-Layout Design</div>
+          <img src="p1.png" class="project-image" style="width:800px;margin-top:100px;">
+          <h3 class="project-title">magazine-iam</h3>
+          <p class="project-description">
+            School design project. I conceptualized it as the inaugural issue of a continuing magazine series, selecting blue as the thematic color for this edition. The layout features a text-dominant design, with a specific emphasis on Chinese typography.
+          </p>
+        </div>
+
+        <div class="project-card" style="height:1000px;">
+          <div class="project-number">#002-visual strategy</div>
+          <img src="p2.jpg" class="project-image" style="width:70%;margin-top:100px;">
+          <h3 class="project-title">poster narrative</h3>
+          <p class="project-description">
+            A school design project that required the creation of four posters to form a self-statement (or a personal narrative). I approached this task by employing deconstruction, sequence, and recombination, strategically pairing the four pieces to construct my own narrative structure and flow.
+          </p>
+        </div>
+
+        <div class="project-card" style="height:1600px;">
+          <div class="project-number">#003-street photography</div>
+          <img src="p3.jpg" class="project-image" style="height:900px;margin-top:100px;">
+          <h3 class="project-title">crowd</h3>
+          <p class="project-description">
+            2025 上海 Shanghai<br>
+            China's shared bike phenomenon took off and rapidly reached saturation after 2018. Today, various brands of shared bicycles are arguably the most widely used form of transport on Chinese urban streets. In this series, I photographed them specifically to represent and signify the flux of human traffic and crowds.
+          </p>
+        </div>
+
+        <div class="project-card" style="height:1600px;">
+          <div class="project-number">#004-street photography</div>
+          <img src="p4.jpg" class="project-image" style="height:900px;margin-top:100px;">
+          <h3 class="project-title">intermezzo</h3>
+          <p class="project-description">
+            2025 上海 Shanghai<br>
+            The street is a stage—that is my conviction. Consequently, all others become the actors, and I am the audience. This body of work marks the beginning of a larger series, aiming to incorporate and record what is observed through this distinct spectator's perspective.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT SECTION ============ -->
       <section id="aboutsection" class="aboutsection">
-  <img src="about.png" alt="About page" class="about-image">
-</section>
-
+        <img src="about.png" alt="About page" class="about-image">
+      </section>
     </div>
   </body>
 </html>
